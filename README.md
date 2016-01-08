@@ -1,7 +1,5 @@
-# microalg
+# MicroAlg
 
-A Clojure app to ... well, that part is up to you.
+Clojure implementation of the [MicroAlg](http://microalg.info) language.
 
-## Usage
-
-FIXME
+This is a work in progress, not close to be usable yet.
