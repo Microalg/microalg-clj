@@ -16,6 +16,11 @@
   (println (str "MicroAlg-clj " microalg.lang/version))
   (in-ns 'microalg.lang))
 
+(defn execute-dot-malg
+  [file]
+  (binding [*ns* (find-ns 'microalg.lang)]
+    (eval (read-string (slurp file)))))
+
 (defn -main
   [& args]
   (if (empty? args)
@@ -23,5 +28,4 @@
       {:on-close javax.swing.JFrame/EXIT_ON_CLOSE
        :init my-init
        :eval my-eval})
-    (clojure.main/repl :init my-init
-                       :eval my-eval)))
+    (execute-dot-malg (nth args 0))))
