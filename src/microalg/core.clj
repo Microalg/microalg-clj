@@ -1,5 +1,5 @@
 (ns microalg.core
-  (:require [microalg.lang :refer :all]
+  (:require microalg.lang
             clojure.main
             org.dipert.swingrepl.main)
   (:gen-class))
@@ -13,7 +13,7 @@
 
 (defn my-init
   []
-  (println (str "MicroAlg-clj " version))
+  (println (str "MicroAlg-clj " microalg.lang/version))
   (in-ns 'microalg.lang))
 
 (defn -main
