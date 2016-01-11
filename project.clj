@@ -4,6 +4,7 @@
                  [uk.org.russet/swingrepl "1.4.1-SNAPSHOT"
                   :exclusions [org.clojure/clojure org.clojure/clojure-contrib]]]
   :javac-options ["-target" "1.6" "-source" "1.6" "-Xlint:-options"]
+  :plugins [[lein-gorilla "0.3.5"]]
   :aot [microalg.core]
   :main microalg.core
   :repl-options {:prompt (fn [ns] ": ")
