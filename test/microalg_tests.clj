@@ -1,5 +1,6 @@
 (ns microalg_tests
-  (:require [microalg.lang :refer :all])
+  (:require [microalg.lang :refer :all]
+            [microalg.errors :as erreur])
   (:use clojure.test))
 
 (deftest version_number []
@@ -16,3 +17,10 @@
   (with-out-str (Afficher "Un"))
   (with-out-str (Afficher "Deux"))
   (is (= "Deux" *LastStdOut)))
+; Erreurs
+(deftest affichage_sans_arg []
+  (is (thrown-with-msg? Exception (re-pattern erreur/afficher-sans-arg)
+    (Afficher))))
+(deftest affichage_trop_args []
+  (is (thrown-with-msg? Exception (re-pattern erreur/afficher-trop-args)
+    (Afficher "tavu" "ou bien"))))
