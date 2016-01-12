@@ -17,6 +17,13 @@
   (with-out-str (Afficher "Un"))
   (with-out-str (Afficher "Deux"))
   (is (= "Deux" *LastStdOut)))
+; Manque (Afficher Afficher)
+(deftest affichage_Vrai []
+  (with-out-str (Afficher Vrai))
+  (is (= "Vrai" *LastStdOut)))
+(deftest affichage_Faux []
+  (with-out-str (Afficher Faux))
+  (is (= "Faux" *LastStdOut)))
 ; Erreurs
 (deftest affichage_sans_arg []
   (is (thrown-with-msg? Exception (re-pattern erreur/afficher-sans-arg)
@@ -24,3 +31,15 @@
 (deftest affichage_trop_args []
   (is (thrown-with-msg? Exception (re-pattern erreur/afficher-trop-args)
     (Afficher "tavu" "ou bien"))))
+
+; Texte
+(deftest texte_texte []
+  (is (= "0" (Texte "0"))))
+(deftest texte_nombre []
+  (is (= "0" (Texte 0))))
+(deftest texte_vrai []
+  (is (= "Vrai" (Texte Vrai))))
+(deftest texte_faux []
+  (is (= "Faux" (Texte Faux))))
+(deftest texte_rien []
+  (is (= "Rien" (Texte Rien))))
