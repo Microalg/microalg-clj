@@ -9,10 +9,17 @@ This is a work in progress, not close to be usable yet.
 
 # Usage
 
+## Execute a file
+
+Please run
+
+    java -jar microalg-XXX-standalone.jar test.malg
+
+## REPL
+
 To get a REPL, either:
 
 * `lein repl`,
-* `java -jar microalg-XXX-standalone.jar some dummy args`,
 * double-click the `.jar`,
 * `java -jar microalg-XXX-standalone.jar`.
 
