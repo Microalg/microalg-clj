@@ -24,6 +24,14 @@
 (deftest affichage_Faux []
   (with-out-str (Afficher Faux))
   (is (= "Faux" *LastStdOut)))
+(deftest affichage_var []
+  (def x 0)
+  (with-out-str (Afficher x))
+  (is (= "0" *LastStdOut)))
+(deftest affichage_simple_eval []
+  (with-out-str (Afficher (do (def x (+ x 1)) x))
+  (is (= 1 x))))
+
 ; Erreurs
 (deftest affichage_sans_arg []
   (is (thrown-with-msg? Exception (re-pattern erreur/afficher-sans-arg)
