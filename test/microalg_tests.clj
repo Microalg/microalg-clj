@@ -1,10 +1,25 @@
 (ns microalg_tests
+  (:refer-clojure :exclude [= > >= < <=])
   (:require [microalg.lang :refer :all]
             [microalg.errors :as erreur])
   (:use clojure.test))
 
 (deftest version_number []
   (is (= "0.0.1" version)))
+
+; Comparaisons
+(deftest comp-= []
+  (is (and (= Vrai (= 1 1)) (= Faux (= 2 1)))))
+(deftest comp-n= []
+  (is (and (= Vrai (n= 1 2)) (= Faux (n= 1 1)))))
+(deftest comp-< []
+  (is (and (= Vrai (< 1 2)) (= Faux (< 2 1)))))
+(deftest comp-<= []
+  (is (and (= Vrai (<= 1 1)) (= Vrai (<= 1 2)) (= Faux (<= 2 1)))))
+(deftest comp-> []
+  (is (and (= Vrai (> 1 1)) (= Vrai (> 1 2)) (= Faux (> 2 1)))))
+(deftest comp->= []
+  (is (and (= Vrai (>= 1 1)) (= Faux (>= 1 2)) (= Vrai (>= 2 1)))))
 
 ; Affichage
 (deftest affichage_bonjour_last []

@@ -1,4 +1,5 @@
 (ns microalg.lang
+  (:refer-clojure :exclude [= > >= < <=])
   (:require [microalg.errors :as erreur]))
 
 (def ^{:const true}
@@ -19,6 +20,25 @@
 (defmethod !text clojure.lang.Symbol
   [arg]
   (str arg))
+
+(defn =
+  [x y]
+  (if (clojure.core/= x y) Vrai Faux))
+(defn n=
+  [x y]
+  (if (clojure.core/not= x y) Vrai Faux))
+(defn <
+  [x y]
+  (if (clojure.core/< x y) Vrai Faux))
+(defn <=
+  [x y]
+  (if (clojure.core/<= x y) Vrai Faux))
+(defn >
+  [x y]
+  (if (clojure.core/> x y) Vrai Faux))
+(defn >=
+  [x y]
+  (if (clojure.core/>= x y) Vrai Faux))
 
 (defn Afficher
   [& args]
