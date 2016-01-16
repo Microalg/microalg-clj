@@ -1,1 +1,6 @@
 (Afficher "Hello world!")
+(Afficher 42)
+
+(Declarer x De_type "nombre")
+(Affecter_a x 1)
+(Afficher (= 3 (+ x 2)))
