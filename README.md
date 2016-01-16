@@ -26,3 +26,7 @@ To get a REPL, either:
 The last two will provide you with a graphical REPL (thanks to
 [swingrepl](https://clojars.org/swingrepl) or rather
 [uk.org.russet/swingrepl](https://clojars.org/uk.org.russet/swingrepl)).
+
+# Discrepancies
+
+* `=/` is `n=`
