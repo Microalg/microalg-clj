@@ -66,3 +66,19 @@
   (is (= "Faux" (Texte Faux))))
 (deftest texte_rien []
   (is (= "Rien" (Texte Rien))))
+
+; Déclaration et Affectation
+(deftest declaration-affectation []
+  (Declarer x De_type "nombre")
+  (Affecter_a x 0)
+  (is (= 0 x)))
+
+; Erreurs
+(deftest double-declaration []
+  (is (thrown-with-msg? Exception (re-pattern
+       "^`Declarer` : la variable `x` a déjà été déclarée de type `nombre`\\.$")
+    (Declarer x De_type "nombre")
+    (Declarer x De_type "nombre"))))
+(deftest affectation-sans-declaration []
+  (is (thrown-with-msg? Exception (re-pattern "^x -- Variable non déclarée.$")
+    (Affecter_a x 0))))

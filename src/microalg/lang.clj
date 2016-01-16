@@ -9,6 +9,7 @@
 (def Vrai 'Vrai)
 (def Faux 'Faux)
 (def *LastStdOut "")
+(def *var-map {})
 
 (defmulti #^{:private true} !text class)
 (defmethod !text java.lang.String
@@ -54,3 +55,20 @@
 (defn Texte
   [& args]
   (!text (nth args 0)))
+
+(defmacro Declarer
+  [var De_type type]
+  `(do
+    (if (contains? *var-map (quote ~var))
+      (erreur/declarer-deja-declaree (quote ~var) (*var-map (quote ~var))))
+    (alter-var-root (var *var-map) assoc (quote ~var) ~type)
+    (def ~var Rien)
+    Rien))
+
+(defmacro Affecter_a
+  [var val]
+  `(do
+    (if-not (contains? *var-map (quote ~var))
+      (erreur/affecter_a-non-declaree (quote ~var)))
+    (def ~var ~val)
+    Rien))
